@@ -1,0 +1,27 @@
+GLFW_ICON ICON "Main.ico"
+
+1 VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  4,2,0,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+	//BLOCK "080904E4" 	// English UK
+    BLOCK "040904E4"	// English US
+    BEGIN
+	  VALUE "CompanyName", "Icybecka Studios"
+      VALUE "FileDescription", "UE1 Map Downgrader"
+      VALUE "FileVersion", "1.0.0"
+      VALUE "InternalName", "UE1 Map Downgrader 226f to 225f"
+      VALUE "LegalCopyright", "(c) 2023 Adam Beckingham"
+      VALUE "OriginalFilename", "UE1MapDowngrade226fTo225f.exe"
+      VALUE "ProductName", "UE1 Map Downgrader"
+      VALUE "ProductVersion", "1.0.0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+	//VALUE "Translation", 0x809, 1252	// English UK
+    VALUE "Translation", 0x409, 1252	// English US
+  END
+END
