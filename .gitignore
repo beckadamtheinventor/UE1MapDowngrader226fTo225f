@@ -1,2 +1,3 @@
 *.exe
 *.rc.data
+*.o
