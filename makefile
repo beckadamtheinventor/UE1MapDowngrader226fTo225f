@@ -23,7 +23,7 @@ APPEND     = @echo.$(subst ",^",$(subst \,^\,$(subst &,^&,$(subst |,^|,$(subst >
 
 CC := C:\raylib\w64devkit\bin\gcc.exe
 CCFLAGS := -s -static -O3 -std=c99 -Iexternal -DPLATFORM_DESKTOP -DPLATFORM_WINDOWS  -Wextra
-LDLIBS  := -Lsrc -lraylib -lopengl32 -lgdi32 -lwinmm
+LDLIBS  := -Lsrc -lgdi32 -lwinmm
 
 else
 
@@ -44,8 +44,8 @@ QUOTE_ARG  = '$(subst ','\'',$1)'#'
 APPEND     = @echo $(call QUOTE_ARG,$1) >>$@
 CC := gcc
 RAYLIB_PATH := ~/raylib
-CCFLAGS := -s -static -O3 -std=c99 -I$(RAYLIB_PATH)/src -Iexternal -DPLATFORM_DESKTOP -DPLATFORM_LINUX -Wextra -D_DEFAULT_SOURCE
-LDLIBS  := -Lsrc -lraylib -lm -lpthread -ldl -lrt
+CCFLAGS := -s -static -O3 -std=c99 -Iexternal -DPLATFORM_DESKTOP -DPLATFORM_LINUX -Wextra -D_DEFAULT_SOURCE
+LDLIBS  := -Lsrc -lm -lpthread -ldl -lrt
 endif
 
 # source: http://blog.jgc.org/2011/07/gnu-make-recursive-wildcard-function.html

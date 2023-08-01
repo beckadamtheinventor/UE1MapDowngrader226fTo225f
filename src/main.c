@@ -12,10 +12,10 @@
 
 const char *SEARCH_DATA = "LevelSummary";
 const char *REPLACE_WITH = "SpecialEvent";
-const size_t SEARCH_DATA_LEN = 13;
+const size_t SEARCH_DATA_LEN = 12;
 
 int downgradeMap(const char *fname) {
-	FILE *fd = fopen(fname, "r");
+	FILE *fd = fopen(fname, "rb");
 	if (fd != NULL) {
 		bool founddata = false;
 		uint8_t *data, *ptr;
@@ -44,7 +44,7 @@ int downgradeMap(const char *fname) {
 		}
 		if (founddata) {
 			memcpy(ptr, REPLACE_WITH, SEARCH_DATA_LEN);
-			fd = fopen(fname, "w");
+			fd = fopen(fname, "wb");
 			if (fd != NULL) {
 				fwrite(data, len, 1, fd);
 				fclose(fd);
@@ -116,9 +116,14 @@ int main(int argc, char **argv) {
 	}
 	for (int i=1; i<argc; i++) {
 		if (strcmp(argv[i], "-d")) {
-			// downgrade if path is not a directory
-			if ((rv = downgradeMap(argv[i])) != 0) {
-				return rv;
+			if (!strcmp(argv[i], "-e")) {
+				// skip -e argument, was already parsed in the previous loop
+				i++;
+			} else {
+				// downgrade if path is not a directory
+				if ((rv = downgradeMap(argv[i])) != 0) {
+					return rv;
+				}
 			}
 		} else {
 			// downgrade all in the directory if path is a directory
